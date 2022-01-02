@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "garybox:empty_gary_box"
+        },
+        {
+            "item": "garybox:gary_frame"
+        },
+        {
+            "item": "garybox:gary_matter"
+        }
+    ],
+    "result": {
+        "item": "garybox:gary_type_box"
+    }
+}

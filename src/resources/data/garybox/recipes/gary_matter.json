@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient": {
+      "item": "garybox:bucket_of_goo"
+    },
+    "result": "garybox:gary_matter",
+    "experience": 1.3,
+    "cookingtime": 600
+}

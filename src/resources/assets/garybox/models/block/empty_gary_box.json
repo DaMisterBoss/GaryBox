@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/orientable",
+    "textures": {
+        
+        "particle": "garybox:block/gary_box_bottom",
+        "top": "garybox:block/gary_box_top",
+        "bottom": "garybox:block/gary_box_bottom",
+        "north": "garybox:block/empty_gary_box_end",
+        "south": "garybox:block/empty_gary_box_end",
+        "side": "garybox:block/empty_gary_box_side"
+    }
+}
