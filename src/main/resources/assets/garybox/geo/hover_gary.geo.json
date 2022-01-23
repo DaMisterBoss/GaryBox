@@ -1,0 +1,49 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Gary",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-6, 12, -6], "size": [12, 12, 12], "uv": [0, 0]},
+						{"origin": [-5, 16, -7], "size": [10, 3, 1], "uv": [0, 33]}
+					]
+				},
+				{
+					"name": "Loop1",
+					"parent": "Gary",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-4, 8, -4], "size": [8, 1, 8], "uv": [0, 24]}
+					]
+				},
+				{
+					"name": "Loop2",
+					"parent": "Loop1",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-3, 5, -3], "size": [6, 1, 6], "uv": [30, 24]}
+					]
+				},
+				{
+					"name": "Loop3",
+					"parent": "Loop2",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-1, 2, -1], "size": [2, 1, 2], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

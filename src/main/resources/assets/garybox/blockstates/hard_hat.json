@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "garybox:block/hard_hat" },
+        "facing=south": { "model": "garybox:block/hard_hat", "y": 180 },
+        "facing=west":  { "model": "garybox:block/hard_hat", "y": 270 },
+        "facing=east":  { "model": "garybox:block/hard_hat", "y": 90 }
+    }
+}

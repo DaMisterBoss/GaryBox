@@ -38,12 +38,25 @@ public class HardHat extends HorizontalFacingBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) { //Unfinished: set for each facing direction
-        final VoxelShape RIM = Block.createCuboidShape(3, 0, 3, 13, 1, 14);
-        final VoxelShape BILL = Block.createCuboidShape(4, 0, 2, 12, 1, 3);
-        final VoxelShape DOME = Block.createCuboidShape(4, 1, 5, 12, 5, 13);
-        final VoxelShape CREST = Block.createCuboidShape(7, 1, 4, 9, 6, 14);
-        final VoxelShape NUBL = Block.createCuboidShape(5, 1, 4, 6, 2, 5);
-        final VoxelShape NUBR = Block.createCuboidShape(10, 1, 4, 11, 2, 5);
-        return VoxelShapes.union(RIM, BILL, DOME, CREST, NUBL, NUBR);
+        switch(state.get(FACING)) {
+            case NORTH:
+              return HAT_A;
+            case EAST:
+              return HAT_B;
+            case SOUTH:
+              return HAT_C;
+            case WEST:
+              return HAT_D;
+            default:
+              return HAT_A;
+        }
     }
+
+    private static final VoxelShape HAT_A = VoxelShapes.union(Block.createCuboidShape(3, 0, 3, 13, 1, 14), Block.createCuboidShape(4, 0, 2, 12, 1, 3), Block.createCuboidShape(4, 1, 5, 12, 5, 13), Block.createCuboidShape(7, 1, 4, 9, 6, 14), Block.createCuboidShape(5, 1, 4, 6, 2, 5), Block.createCuboidShape(10, 1, 4, 11, 2, 5));
+
+    private static final VoxelShape HAT_B = VoxelShapes.union(Block.createCuboidShape(2, 0, 3, 13, 1, 13), Block.createCuboidShape(13, 0, 4, 14, 1, 12), Block.createCuboidShape(3, 1, 4, 11, 5, 12), Block.createCuboidShape(2, 1, 7, 12, 6, 9), Block.createCuboidShape(11, 1, 5, 12, 2, 6), Block.createCuboidShape(11, 1, 10, 12, 2, 11));
+
+    private static final VoxelShape HAT_C = VoxelShapes.union(Block.createCuboidShape(3, 0, 2, 13, 1, 13), Block.createCuboidShape(4, 0, 13, 12, 1, 14), Block.createCuboidShape(4, 1, 3, 12, 5, 11), Block.createCuboidShape(7, 1, 2, 9, 6, 12), Block.createCuboidShape(10, 1, 11, 11, 2, 12), Block.createCuboidShape(5, 1, 11, 6, 2, 12));
+
+    private static final VoxelShape HAT_D = VoxelShapes.union(Block.createCuboidShape(3, 0, 3, 14, 1, 13), Block.createCuboidShape(2, 0, 4, 3, 1, 12), Block.createCuboidShape(5, 1, 4, 13, 5, 12), Block.createCuboidShape(4, 1, 7, 14, 6, 9), Block.createCuboidShape(4, 1, 10, 5, 2, 11), Block.createCuboidShape(4, 1, 5, 5, 2, 6));
 }

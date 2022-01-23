@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "garybox:block/crown" },
+        "facing=south": { "model": "garybox:block/crown", "y": 180 },
+        "facing=west":  { "model": "garybox:block/crown", "y": 270 },
+        "facing=east":  { "model": "garybox:block/crown", "y": 90 }
+    }
+}
