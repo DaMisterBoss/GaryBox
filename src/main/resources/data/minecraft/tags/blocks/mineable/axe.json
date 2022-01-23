@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "garybox:empty_gary_box",
+        "garybox:open_gary_box"
+    ]
+}

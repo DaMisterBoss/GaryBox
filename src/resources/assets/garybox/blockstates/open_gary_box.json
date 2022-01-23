@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "garybox:block/open_gary_box" },
-        "facing=south": { "model": "garybox:block/open_gary_box", "y": 180 },
-        "facing=west":  { "model": "garybox:block/open_gary_box", "y": 270 },
-        "facing=east":  { "model": "garybox:block/open_gary_box", "y": 90 }
-    }
-}

@@ -1,6 +1,0 @@
-{
-    "parent": "minecraft:item/generated",
-    "textures": {
-        "layer0": "garybox:item/bucket_of_goo"
-    }
-}
