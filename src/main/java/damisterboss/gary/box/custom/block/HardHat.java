@@ -52,6 +52,7 @@ public class HardHat extends HorizontalFacingBlock {
         }
     }
 
+    // List of Orientations for the Hard Hat block
     private static final VoxelShape HAT_A = VoxelShapes.union(Block.createCuboidShape(3, 0, 3, 13, 1, 14), Block.createCuboidShape(4, 0, 2, 12, 1, 3), Block.createCuboidShape(4, 1, 5, 12, 5, 13), Block.createCuboidShape(7, 1, 4, 9, 6, 14), Block.createCuboidShape(5, 1, 4, 6, 2, 5), Block.createCuboidShape(10, 1, 4, 11, 2, 5));
 
     private static final VoxelShape HAT_B = VoxelShapes.union(Block.createCuboidShape(2, 0, 3, 13, 1, 13), Block.createCuboidShape(13, 0, 4, 14, 1, 12), Block.createCuboidShape(3, 1, 4, 11, 5, 12), Block.createCuboidShape(2, 1, 7, 12, 6, 9), Block.createCuboidShape(11, 1, 5, 12, 2, 6), Block.createCuboidShape(11, 1, 10, 12, 2, 11));
