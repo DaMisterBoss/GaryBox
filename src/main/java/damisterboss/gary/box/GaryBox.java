@@ -220,6 +220,54 @@ public class GaryBox implements ModInitializer {
                         Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
                         BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_SLIGHTLY_DAMAGED_SHRINE))
         );
+
+        BiomeModifications.addStructure(
+
+                BiomeSelectors.categories(
+                        Biome.Category.DESERT,
+                        Biome.Category.EXTREME_HILLS,
+                        Biome.Category.FOREST,
+                        Biome.Category.ICY,
+                        Biome.Category.JUNGLE,
+                        Biome.Category.PLAINS,
+                        Biome.Category.SAVANNA,
+                        Biome.Category.TAIGA),
+                RegistryKey.of(
+                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
+                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_MODERATELY_DAMAGED_SHRINE))
+        );
+
+        BiomeModifications.addStructure(
+
+                BiomeSelectors.categories(
+                        Biome.Category.DESERT,
+                        Biome.Category.EXTREME_HILLS,
+                        Biome.Category.FOREST,
+                        Biome.Category.ICY,
+                        Biome.Category.JUNGLE,
+                        Biome.Category.PLAINS,
+                        Biome.Category.SAVANNA,
+                        Biome.Category.TAIGA),
+                RegistryKey.of(
+                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
+                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_HEAVILY_DAMAGED_SHRINE))
+        );
+
+        BiomeModifications.addStructure(
+
+                BiomeSelectors.categories(
+                        Biome.Category.DESERT,
+                        Biome.Category.EXTREME_HILLS,
+                        Biome.Category.FOREST,
+                        Biome.Category.ICY,
+                        Biome.Category.JUNGLE,
+                        Biome.Category.PLAINS,
+                        Biome.Category.SAVANNA,
+                        Biome.Category.TAIGA),
+                RegistryKey.of(
+                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
+                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_PRISTINE_SHRINE))
+        );
 	}
 }
 

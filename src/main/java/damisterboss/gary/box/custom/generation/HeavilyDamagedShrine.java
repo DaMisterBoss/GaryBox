@@ -22,10 +22,10 @@ import damisterboss.gary.box.GaryBox;
 
 import java.util.Optional;
 
-public class SlightlyDamagedShrine extends StructureFeature<StructurePoolFeatureConfig> {
+public class HeavilyDamagedShrine extends StructureFeature<StructurePoolFeatureConfig> {
 
-    public SlightlyDamagedShrine(Codec<StructurePoolFeatureConfig> codec) {
-        super(codec, SlightlyDamagedShrine::createPiecesGenerator, PostPlacementProcessor.EMPTY);
+    public HeavilyDamagedShrine(Codec<StructurePoolFeatureConfig> codec) {
+        super(codec, HeavilyDamagedShrine::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
     public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_MONSTERS = Pool.of(
     );
@@ -48,14 +48,14 @@ public class SlightlyDamagedShrine extends StructureFeature<StructurePoolFeature
 
     public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
 
-        if (!SlightlyDamagedShrine.isFeatureChunk(context)) {
+        if (!HeavilyDamagedShrine.isFeatureChunk(context)) {
             return Optional.empty();
         }
 
         StructurePoolFeatureConfig newConfig = new StructurePoolFeatureConfig(
 
                 () -> context.registryManager().get(Registry.STRUCTURE_POOL_KEY)
-                        .get(new Identifier("garybox", "slightly_damaged_shrine/start_pool")),
+                        .get(new Identifier("garybox", "heavily_damaged_shrine/start_pool")),
 
                 10
         );
