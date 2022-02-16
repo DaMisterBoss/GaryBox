@@ -27,26 +27,28 @@ public class SlightlyDamagedShrine extends StructureFeature<StructurePoolFeature
     public SlightlyDamagedShrine(Codec<StructurePoolFeatureConfig> codec) {
         super(codec, SlightlyDamagedShrine::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
-    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_MONSTERS = Pool.of(
-    );
+
+    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_MONSTERS = Pool.of();
 
     public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_CREATURES = Pool.of(
-            new SpawnSettings.SpawnEntry(GaryBox.GARY, 30, 3, 10)
-    );
+            new SpawnSettings.SpawnEntry(GaryBox.GARY, 30, 3, 10));
 
     private static boolean isFeatureChunk(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
         BlockPos spawnXZPosition = context.chunkPos().getCenterAtY(0);
 
-        int landHeight = context.chunkGenerator().getHeightInGround(spawnXZPosition.getX(), spawnXZPosition.getZ(), Heightmap.Type.WORLD_SURFACE_WG, context.world());
+        int landHeight = context.chunkGenerator().getHeightInGround(spawnXZPosition.getX(), spawnXZPosition.getZ(),
+                Heightmap.Type.WORLD_SURFACE_WG, context.world());
 
-        VerticalBlockSample columnOfBlocks = context.chunkGenerator().getColumnSample(spawnXZPosition.getX(), spawnXZPosition.getZ(), context.world());
+        VerticalBlockSample columnOfBlocks = context.chunkGenerator().getColumnSample(spawnXZPosition.getX(),
+                spawnXZPosition.getZ(), context.world());
 
         BlockState topBlock = columnOfBlocks.getState(landHeight);
 
-        return topBlock.getFluidState().isEmpty(); //alternate: landHeight > 100;
+        return topBlock.getFluidState().isEmpty(); // alternate: landHeight > 100;
     }
 
-    public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
+    public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(
+            StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
 
         if (!SlightlyDamagedShrine.isFeatureChunk(context)) {
             return Optional.empty();
@@ -57,10 +59,10 @@ public class SlightlyDamagedShrine extends StructureFeature<StructurePoolFeature
                 () -> context.registryManager().get(Registry.STRUCTURE_POOL_KEY)
                         .get(new Identifier("garybox", "slightly_damaged_shrine/start_pool")),
 
-                10
-        );
+                10);
 
-        // Create a new context with the new config that has our json pool. We will pass this into JigsawPlacement.addPieces
+        // Create a new context with the new config that has our json pool. We will pass
+        // this into JigsawPlacement.addPieces
         StructureGeneratorFactory.Context<StructurePoolFeatureConfig> newContext = new StructureGeneratorFactory.Context<>(
                 context.chunkGenerator(),
                 context.biomeSource(),
@@ -70,16 +72,16 @@ public class SlightlyDamagedShrine extends StructureFeature<StructurePoolFeature
                 context.world(),
                 context.validBiome(),
                 context.structureManager(),
-                context.registryManager()
-        );
+                context.registryManager());
 
         BlockPos blockpos = context.chunkPos().getCenterAtY(0);
 
-        Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator =
-            StructurePoolBasedGenerator.generate(newContext, PoolStructurePiece::new, blockpos, false, true);
+        Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator = StructurePoolBasedGenerator
+                .generate(newContext, PoolStructurePiece::new, blockpos.down(4), false, true);
 
-        if(structurePiecesGenerator.isPresent()) {
-            // I use to debug and quickly find out if the structure is spawning or not and where it is.
+        if (structurePiecesGenerator.isPresent()) {
+            // I use to debug and quickly find out if the structure is spawning or not and
+            // where it is.
             // This is returning the coordinates of the center starting piece.
             GaryBox.LOGGER.log(Level.DEBUG, "Structure at " + blockpos);
         }
