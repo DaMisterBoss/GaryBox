@@ -1,17 +1,11 @@
 {
   "mappings": {
-    "damisterboss/gary/box/mixin/NoiseChunkGeneratorMixin": {
-      "getEntitySpawnList(Lnet/minecraft/world/biome/Biome;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/entity/SpawnGroup;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/collection/Pool;": "Lnet/minecraft/class_3754;method_12113(Lnet/minecraft/class_1959;Lnet/minecraft/class_5138;Lnet/minecraft/class_1311;Lnet/minecraft/class_2338;)Lnet/minecraft/class_6012;"
-    },
     "damisterboss/gary/box/mixin/ExampleMixin": {
       "init()V": "Lnet/minecraft/class_442;method_25426()V"
     }
   },
   "data": {
     "named:intermediary": {
-      "damisterboss/gary/box/mixin/NoiseChunkGeneratorMixin": {
-        "getEntitySpawnList(Lnet/minecraft/world/biome/Biome;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/entity/SpawnGroup;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/util/collection/Pool;": "Lnet/minecraft/class_3754;method_12113(Lnet/minecraft/class_1959;Lnet/minecraft/class_5138;Lnet/minecraft/class_1311;Lnet/minecraft/class_2338;)Lnet/minecraft/class_6012;"
-      },
       "damisterboss/gary/box/mixin/ExampleMixin": {
         "init()V": "Lnet/minecraft/class_442;method_25426()V"
       }

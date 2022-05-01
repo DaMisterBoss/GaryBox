@@ -1,8 +1,6 @@
 package damisterboss.gary.box;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -22,10 +20,7 @@ import net.minecraft.item.Item.Settings;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.biome.Biome;
 import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 
@@ -44,8 +39,6 @@ import damisterboss.gary.box.custom.entity.Gary;
 import damisterboss.gary.box.custom.entity.HoverGary;
 import damisterboss.gary.box.custom.entity.KingGary;
 import damisterboss.gary.box.custom.entity.LargeGary;
-import damisterboss.gary.box.custom.generation.GBConfiguredStructures;
-import damisterboss.gary.box.custom.generation.GBStructures;
 import damisterboss.gary.box.custom.item.GaryFoodComponents;
 import damisterboss.gary.box.custom.item.GarySauceItem;
 
@@ -195,79 +188,6 @@ public class GaryBox implements ModInitializer {
 		Registry.register(Registry.SOUND_EVENT, GaryBox.GARY_AMBIENT, GARY_AMBIENT_EVENT);
 		Registry.register(Registry.SOUND_EVENT, GaryBox.GARY_HURT, GARY_HURT_EVENT);
 		Registry.register(Registry.SOUND_EVENT, GaryBox.GARY_DEATH, GARY_DEATH_EVENT);
-
-		// Tutorial from TelepathicGrunt's fabric structure tutorial (https://github.com/TelepathicGrunt/StructureTutorialMod/tree/1.18.x-Fabric-Jigsaw)
-		GBStructures.setupAndRegisterStructureFeatures();
-        GBConfiguredStructures.registerConfiguredStructures();
-        addStructureSpawningToDimensionsAndBiomes();
-	}
-
-	// Function of the registration process for structure(s)
-	public static void addStructureSpawningToDimensionsAndBiomes() {
-
-        BiomeModifications.addStructure(
-
-                BiomeSelectors.categories(
-                        Biome.Category.DESERT,
-                        Biome.Category.EXTREME_HILLS,
-                        Biome.Category.FOREST,
-                        Biome.Category.ICY,
-                        Biome.Category.JUNGLE,
-                        Biome.Category.PLAINS,
-                        Biome.Category.SAVANNA,
-                        Biome.Category.TAIGA),
-                RegistryKey.of(
-                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
-                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_SLIGHTLY_DAMAGED_SHRINE))
-        );
-
-        BiomeModifications.addStructure(
-
-                BiomeSelectors.categories(
-                        Biome.Category.DESERT,
-                        Biome.Category.EXTREME_HILLS,
-                        Biome.Category.FOREST,
-                        Biome.Category.ICY,
-                        Biome.Category.JUNGLE,
-                        Biome.Category.PLAINS,
-                        Biome.Category.SAVANNA,
-                        Biome.Category.TAIGA),
-                RegistryKey.of(
-                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
-                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_MODERATELY_DAMAGED_SHRINE))
-        );
-
-        BiomeModifications.addStructure(
-
-                BiomeSelectors.categories(
-                        Biome.Category.DESERT,
-                        Biome.Category.EXTREME_HILLS,
-                        Biome.Category.FOREST,
-                        Biome.Category.ICY,
-                        Biome.Category.JUNGLE,
-                        Biome.Category.PLAINS,
-                        Biome.Category.SAVANNA,
-                        Biome.Category.TAIGA),
-                RegistryKey.of(
-                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
-                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_HEAVILY_DAMAGED_SHRINE))
-        );
-
-        BiomeModifications.addStructure(
-
-                BiomeSelectors.categories(
-                        Biome.Category.DESERT,
-                        Biome.Category.EXTREME_HILLS,
-                        Biome.Category.FOREST,
-                        Biome.Category.ICY,
-                        Biome.Category.JUNGLE,
-                        Biome.Category.PLAINS,
-                        Biome.Category.SAVANNA,
-                        Biome.Category.TAIGA),
-                RegistryKey.of(
-                        Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
-                        BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE.getId(GBConfiguredStructures.CONFIGURED_PRISTINE_SHRINE))
-        );
 	}
 }
 
