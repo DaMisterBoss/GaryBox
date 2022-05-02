@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "garybox:gary_sauce"
+        },
+        {
+            "item": "minecraft:cookie"
+        }
+    ],
+    "result": {
+        "item": "garybox:gary_cookie"
+    }
+}

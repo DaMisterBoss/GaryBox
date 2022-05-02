@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "garybox:gary_sauce"
+            "name": "garybox:empty_gary_box"
           }
         ],
         "conditions": [

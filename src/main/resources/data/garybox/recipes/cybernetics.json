@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "i$*",
+        "#=#"
+    ],
+    "key": {
+        "#": {"item": "minecraft:iron_ingot"},
+        "=": {"item": "minecraft:copper_ingot"},
+        "i": {"item": "minecraft:redstone_torch"},
+        "*": {"item": "minecraft:redstone"},
+        "$": {"item": "minecraft:green_dye"}
+    },
+    "result": {
+        "item": "garybox:cybernetics"
+    }
+}

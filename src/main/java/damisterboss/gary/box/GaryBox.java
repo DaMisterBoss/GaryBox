@@ -21,7 +21,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,6 +28,7 @@ import org.apache.logging.log4j.Logger;
 
 import damisterboss.gary.box.custom.block.Crown;
 import damisterboss.gary.box.custom.block.EmptyGaryBox;
+import damisterboss.gary.box.custom.block.GaryCake;
 import damisterboss.gary.box.custom.block.GaryTypeBox;
 import damisterboss.gary.box.custom.block.HardHat;
 import damisterboss.gary.box.custom.block.OpenGaryBox;
@@ -39,7 +39,9 @@ import damisterboss.gary.box.custom.entity.Gary;
 import damisterboss.gary.box.custom.entity.HoverGary;
 import damisterboss.gary.box.custom.entity.KingGary;
 import damisterboss.gary.box.custom.entity.LargeGary;
+import damisterboss.gary.box.custom.entity.MedicGary;
 import damisterboss.gary.box.custom.item.GaryFoodComponents;
+import damisterboss.gary.box.custom.item.GaryMatterItem;
 import damisterboss.gary.box.custom.item.GarySauceItem;
 
 public class GaryBox implements ModInitializer {
@@ -50,21 +52,24 @@ public class GaryBox implements ModInitializer {
 	public static final ItemGroup GARYBOX = FabricItemGroupBuilder.create(new Identifier("garybox", "general")).icon(() -> new ItemStack(GaryBox.GARY_COOKIE))
 	.appendItems(stacks -> {
 		stacks.add(new ItemStack(GaryBox.ESSENCE_OF_GARY));
-		stacks.add(new ItemStack(GaryBox.GARY_ORE));
-		stacks.add(new ItemStack(GaryBox.GARY_BLOCK));
-		stacks.add(new ItemStack(GaryBox.GARY_GOO));
 		stacks.add(new ItemStack(GaryBox.GARY_MATTER));
-		stacks.add(new ItemStack(GaryBox.GARY_FRAME));
-
-		stacks.add(new ItemStack(GaryBox.EMPTY_GARY_BOX));
-		stacks.add(new ItemStack(GaryBox.GARY_TYPE_BOX));
+		stacks.add(new ItemStack(GaryBox.GARY_GOO));
 
 		stacks.add(new ItemStack(GaryBox.GARY_SAUCE));
 		stacks.add(new ItemStack(GaryBox.GARY_COOKIE));
+		stacks.add(new ItemStack(GaryBox.GARY_CAKE));
 
+		stacks.add(new ItemStack(GaryBox.EMPTY_GARY_BOX));
+		stacks.add(new ItemStack(GaryBox.GARY_TYPE_BOX));
+		stacks.add(new ItemStack(GaryBox.GARY_BLOCK));
+		
 		stacks.add(new ItemStack(GaryBox.TOPHAT));
 		stacks.add(new ItemStack(GaryBox.HARD_HAT));
 		stacks.add(new ItemStack(GaryBox.CROWN));
+		stacks.add(new ItemStack(GaryBox.CYBERNETICS));
+
+		stacks.add(new ItemStack(GaryBox.GARY_FRAME));
+		stacks.add(new ItemStack(GaryBox.GARY_ORE));
 
 	})
 	.build();
@@ -75,8 +80,9 @@ public class GaryBox implements ModInitializer {
 	public static final Block GARY_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5f, 6).sounds(BlockSoundGroup.METAL).requiresTool());
 	public static final Item GARY_GOO = new Item(new Item.Settings().group(GaryBox.GARYBOX));
 	public static final Item BUCKET_OF_GOO = new Item(new Item.Settings().group(GaryBox.GARYBOX));
-	public static final Item GARY_MATTER = new Item(new Item.Settings().group(GaryBox.GARYBOX));
+	public static final Item GARY_MATTER = new GaryMatterItem(new Item.Settings().group(GaryBox.GARYBOX).food(GaryFoodComponents.GARY_MATTER));
 	public static final Item GARY_FRAME = new Item(new Item.Settings().group(GaryBox.GARYBOX));
+	public static final Item CYBERNETICS = new Item(new Item.Settings().group(GaryBox.GARYBOX));
 
 	// Boxes
 	public static final Block EMPTY_GARY_BOX = new EmptyGaryBox(FabricBlockSettings.of(Material.WOOD).strength(1f, 2).sounds(BlockSoundGroup.WOOD));
@@ -86,6 +92,7 @@ public class GaryBox implements ModInitializer {
 	// Food
 	public static final Item GARY_SAUCE = new GarySauceItem(new Item.Settings().group(GaryBox.GARYBOX).food(GaryFoodComponents.GARY_SAUCE));
 	public static final Item GARY_COOKIE = new Item(new Item.Settings().group(GaryBox.GARYBOX).food(GaryFoodComponents.GARY_COOKIE));
+	public static final Block GARY_CAKE = new GaryCake(FabricBlockSettings.of(Material.WOOD).strength(0.5f, 0.5f).sounds(BlockSoundGroup.WOOL));
 
 	// Hats
 	public static final Block TOPHAT = new TopHat(FabricBlockSettings.of(Material.WOOL).strength(1f, 0).sounds(BlockSoundGroup.WOOL));
@@ -93,7 +100,7 @@ public class GaryBox implements ModInitializer {
 	public static final Block CROWN = new Crown(FabricBlockSettings.of(Material.METAL).strength(1f, 0).sounds(BlockSoundGroup.AMETHYST_BLOCK));
 	
 	// Gary^3
-    public static final Item GARY_SPAWN_EGG = new SpawnEggItem(GaryBox.GARY, 16777215, 16448250, new Item.Settings().group(ItemGroup.MISC));
+    public static final Item GARY_SPAWN_EGG = new SpawnEggItem(GaryBox.GARY, 16777215, 16448250, new Item.Settings());
 
 	public static final EntityType<Gary> GARY = Registry.register(
         Registry.ENTITY_TYPE,
@@ -130,6 +137,12 @@ public class GaryBox implements ModInitializer {
         new Identifier("garybox", "hover_gary"),
         FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HoverGary::new).dimensions(EntityDimensions.changing(0.75f, 1.6f)).build()
 	);
+	
+	public static final EntityType<MedicGary> MEDIC_GARY = Registry.register(
+        Registry.ENTITY_TYPE,
+        new Identifier("garybox", "medic_gary"),
+        FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MedicGary::new).dimensions(EntityDimensions.fixed(0.75f, 0.75f)).build()
+	);
 
 	// Sounds and what they mean
 	public static final Identifier GARY_AMBIENT = new Identifier("garybox:gary_ambient");
@@ -146,7 +159,6 @@ public class GaryBox implements ModInitializer {
 
 		// GeckoLib for Animation
 		GeckoLib.initialize();
-		GeckoLibMod.DISABLE_IN_DEV = true;
 
 		// Registers all of the bips and bons
 		Registry.register(Registry.ITEM, new Identifier("garybox", "essence_of_gary"), ESSENCE_OF_GARY);
@@ -158,6 +170,7 @@ public class GaryBox implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("garybox", "bucket_of_goo"), BUCKET_OF_GOO);
 		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_matter"), GARY_MATTER);
 		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_frame"), GARY_FRAME);
+		Registry.register(Registry.ITEM, new Identifier("garybox", "cybernetics"), CYBERNETICS);
 		
 		Registry.register(Registry.BLOCK, new Identifier("garybox", "empty_gary_box"), EMPTY_GARY_BOX);
 		Registry.register(Registry.ITEM, new Identifier("garybox", "empty_gary_box"), new BlockItem(EMPTY_GARY_BOX, new Settings().group(GaryBox.GARYBOX)));
@@ -168,6 +181,8 @@ public class GaryBox implements ModInitializer {
 		
 		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_cookie"), GARY_COOKIE);
 		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_sauce"), GARY_SAUCE);
+		Registry.register(Registry.BLOCK, new Identifier("garybox", "gary_cake"), GARY_CAKE);
+		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_cake"), new BlockItem(GARY_CAKE, new Settings().group(GaryBox.GARYBOX)));
 		
 		Registry.register(Registry.BLOCK, new Identifier("garybox", "tophat"), TOPHAT);
 		Registry.register(Registry.ITEM, new Identifier("garybox", "tophat"), new BlockItem(TOPHAT, new Settings().group(GaryBox.GARYBOX)));
@@ -178,12 +193,13 @@ public class GaryBox implements ModInitializer {
 
 		Registry.register(Registry.ITEM, new Identifier("garybox", "gary_spawn_egg"), GARY_SPAWN_EGG);
 
-		FabricDefaultAttributeRegistry.register(GARY, Gary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20000000298023224D));
-		FabricDefaultAttributeRegistry.register(LARGE_GARY, LargeGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15000000298023224D));
-		FabricDefaultAttributeRegistry.register(BUSINESS_GARY, BusinessGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20000000298023224D));
-		FabricDefaultAttributeRegistry.register(CONSTRUCTION_GARY, ConstructionGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20000000298023224D));
-		FabricDefaultAttributeRegistry.register(KING_GARY, KingGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20000000298023224D));
+		FabricDefaultAttributeRegistry.register(GARY, Gary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D));
+		FabricDefaultAttributeRegistry.register(LARGE_GARY, LargeGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 15.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15D));
+		FabricDefaultAttributeRegistry.register(BUSINESS_GARY, BusinessGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D));
+		FabricDefaultAttributeRegistry.register(CONSTRUCTION_GARY, ConstructionGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 12.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D));
+		FabricDefaultAttributeRegistry.register(KING_GARY, KingGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D));
 		FabricDefaultAttributeRegistry.register(HOVER_GARY, HoverGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.2D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2F));
+		FabricDefaultAttributeRegistry.register(MEDIC_GARY, MedicGary.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D));
 
 		Registry.register(Registry.SOUND_EVENT, GaryBox.GARY_AMBIENT, GARY_AMBIENT_EVENT);
 		Registry.register(Registry.SOUND_EVENT, GaryBox.GARY_HURT, GARY_HURT_EVENT);

@@ -134,6 +134,14 @@ public class Gary extends PathAwareEntity {
             isValid = true;
             typeGary = GaryBox.KING_GARY.create(this.world);
         }
+        if(item.getItem() == new ItemStack(Items.GOLDEN_APPLE).getItem()) {
+            isValid = true;
+            typeGary = GaryBox.MEDIC_GARY.create(this.world);
+        }
+        if(item.getItem() == new ItemStack(GaryBox.CYBERNETICS).getItem()) {
+            isValid = true;
+            typeGary = GaryBox.HOVER_GARY.create(this.world);
+        }
         return isValid;
     }
 

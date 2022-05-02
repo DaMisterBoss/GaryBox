@@ -10,12 +10,14 @@ import damisterboss.gary.box.client.model.ConstructionGaryModel;
 import damisterboss.gary.box.client.model.GaryModel;
 import damisterboss.gary.box.client.model.KingGaryModel;
 import damisterboss.gary.box.client.model.LargeGaryModel;
+import damisterboss.gary.box.client.model.MedicGaryModel;
 import damisterboss.gary.box.client.renderer.BusinessGaryRenderer;
 import damisterboss.gary.box.client.renderer.ConstructionGaryRenderer;
 import damisterboss.gary.box.client.renderer.GaryRenderer;
 import damisterboss.gary.box.client.renderer.HoverGaryRenderer;
 import damisterboss.gary.box.client.renderer.KingGaryRenderer;
 import damisterboss.gary.box.client.renderer.LargeGaryRenderer;
+import damisterboss.gary.box.client.renderer.MedicGaryRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 
@@ -27,6 +29,7 @@ public class GaryBoxClient implements ClientModInitializer{
     public static final EntityModelLayer CONSTRUCTION_GARY_LAYER = new EntityModelLayer(new Identifier("garybox", "construction_gary"), "main");
     public static final EntityModelLayer KING_GARY_LAYER = new EntityModelLayer(new Identifier("garybox", "king_gary"), "main");
     public static final EntityModelLayer HOVER_GARY_LAYER = new EntityModelLayer(new Identifier("garybox", "hover_gary"), "main");
+    public static final EntityModelLayer MEDIC_GARY_LAYER = new EntityModelLayer(new Identifier("garybox", "medic_gary"), "main");
     
     @Override
     public void onInitializeClient() {
@@ -56,11 +59,16 @@ public class GaryBoxClient implements ClientModInitializer{
             return new HoverGaryRenderer(context);
         });
         
+        EntityRendererRegistry.register(GaryBox.MEDIC_GARY, (context) -> {
+            return new MedicGaryRenderer(context);
+        });
+        
         EntityModelLayerRegistry.registerModelLayer(GARY_LAYER, GaryModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(LARGE_GARY_LAYER, LargeGaryModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(BUSINESS_GARY_LAYER, BusinessGaryModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(CONSTRUCTION_GARY_LAYER, ConstructionGaryModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(KING_GARY_LAYER, KingGaryModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MEDIC_GARY_LAYER, MedicGaryModel::getTexturedModelData);
     
     }
 }

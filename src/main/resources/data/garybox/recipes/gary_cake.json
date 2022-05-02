@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "AAA",
+      "BEB",
+      "CCC"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:milk_bucket"
+      },
+      "B": {
+        "item": "garybox:essence_of_gary"
+      },
+      "C": {
+        "item": "minecraft:wheat"
+      },
+      "E": {
+        "item": "garybox:gary_sauce"
+      }
+    },
+    "result": {
+      "item": "garybox:gary_cake"
+    }
+  }
