@@ -229,7 +229,7 @@ public class HoverGary extends PathAwareEntity implements IAnimatable, Flutterer
                 gary.setPersistent();
             }
             gary.setInvulnerable(this.isInvulnerable());
-            ItemEntity itemEntity = new ItemEntity(this.world, this.getX(), this.getY(), this.getZ(), new ItemStack(GaryBox.TOPHAT, 1));
+            ItemEntity itemEntity = new ItemEntity(this.world, this.getX(), this.getY(), this.getZ(), new ItemStack(GaryBox.CYBERNETICS, 1));
             player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
             if(!player.getAbilities().creativeMode)
                 itemStack.damage(1, random, null);

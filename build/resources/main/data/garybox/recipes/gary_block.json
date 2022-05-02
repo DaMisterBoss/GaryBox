@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {"item": "garybox:essence_of_gary"}
+    },
+    "result": {
+        "item": "garybox:gary_frame"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "gary_ambient": {
+        "subtitle": "subtitles.garybox.gary_ambient",
+        "sounds": [
+            "garybox:gary_ambient"
+        ]
+    },
+    "gary_hurt": {
+        "subtitle": "subtitles.garybox.gary_hurt",
+        "sounds": [
+            "garybox:gary_hurt"
+        ]
+    },
+    "gary_death": {
+        "subtitle": "subtitles.garybox.gary_death",
+        "sounds": [
+            "garybox:gary_death"
+        ]
+    }
+}

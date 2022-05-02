@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "garybox:block/tophat" },
+        "facing=south": { "model": "garybox:block/tophat", "y": 180 },
+        "facing=west":  { "model": "garybox:block/tophat", "y": 270 },
+        "facing=east":  { "model": "garybox:block/tophat", "y": 90 }
+    }
+}

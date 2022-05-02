@@ -1,0 +1,63 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+      {
+        "rolls": 1.0,
+        "bonus_rolls": 0.0,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "type": "minecraft:uniform",
+                  "min": 0.0,
+                  "max": 2.0
+                },
+                "add": false
+              },
+              {
+                "function": "garybox:essence_of_gary",
+                "count": {
+                  "type": "minecraft:uniform",
+                  "min": 0.0,
+                  "max": 1.0
+                }
+              }
+            ],
+            "name": "minecraft:string"
+          }
+        ]
+      },
+      {
+        "rolls": 1.0,
+        "bonus_rolls": 0.0,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "type": "minecraft:uniform",
+                  "min": 0.0,
+                  "max": 2.0
+                },
+                "add": false
+              },
+              {
+                "function": "garybox:tophat",
+                "count": {
+                  "type": "minecraft:uniform",
+                  "min": 0.0,
+                  "max": 1.0
+                }
+              }
+            ],
+            "name": "minecraft:string"
+          }
+        ]
+      }
+    ]
+  }
